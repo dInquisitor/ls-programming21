@@ -53,13 +53,22 @@ public class IntegerSet {
    * @return true if the two sets are equal and false otherwise
    */
   public boolean equals(IntegerSet b) {
-    int count = 0;
+    int count1 = 0;
     for (Integer item : b.getSet()) {
       if (set.contains(item)) {
-        count++;
+        count1++;
       }
     }
-    return count == this.length();
+
+    int count2 = 0;
+    List<Integer> setb = b.getSet();
+    for (Integer item : set) {
+      if (setb.contains(item)) {
+        count2++;
+      }
+    }
+
+    return count1 == this.length() && count2 == b.length();
   };
 
   /**
@@ -210,7 +219,7 @@ public class IntegerSet {
    * 
    * @return true if the set is empty, false otherwise
    */
-  boolean isEmpty() {
+  public boolean isEmpty() {
     return this.length() == 0;
   }
 
